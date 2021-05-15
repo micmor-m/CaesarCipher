@@ -5,14 +5,19 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 
-def encrypt(text_p, shift_p):
-    encrypt_str = ""
+def caesar(text_p, shift_p, direction_p):
+    start_str = ""
     for ch in text_p:
-        new_index = shift_p + alphabet.index(ch)
-        if new_index > 25:
-            new_index = new_index - 26
-        encrypt_str += alphabet[new_index]
-    print(f"The encoded text is {encrypt_str}")
+        if direction == "encode":
+            new_index = shift_p + alphabet.index(ch)
+            if new_index > 25:
+                new_index = new_index - 26
+            start_str += alphabet[new_index]
+        else:
+            new_index = alphabet.index(ch) - shift_p
+            start_str += alphabet[new_index]
+
+    print(f"The {direction_p} text is {start_str}")
 
 
-encrypt(text, shift)
+caesar(text, shift, direction)
